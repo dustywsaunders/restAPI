@@ -10,7 +10,7 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
 const port = 4000
-app.listen(port, () => `Listening on port ${port}`);
+app.listen(process.env.PORT || port, () => `Listening on port ${port}`);
 
 
 const House = sequelize.define('house', {
