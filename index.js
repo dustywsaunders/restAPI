@@ -2,11 +2,9 @@ const express = require('express');
 const app = express(); // app is technically your server
 
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize('postgres://postgres:secret@localhost:5432/postgres', {
-  define: {
-    timestamps: false
-  }
-})
+
+const connectionString = process.env.DATABASE_URL || 'postgres://postgres:secret@localhost:5432/postgres'
+const sequelize = new Sequelize(connectionString, {define: { timestamps: false }})
 
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
